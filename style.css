@@ -35,6 +35,19 @@ h1 {
 	margin: 30px auto;
 }
 
+.pruhGalerie {
+	
+}
+
+#fotoPruh {
+	float: left;
+	width: 150px;
+	margin: 5px;
+
+}
+
+
+
 .ramecek {
 	flex: 1;
 	margin: 0 20px;

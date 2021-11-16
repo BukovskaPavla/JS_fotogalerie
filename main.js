@@ -64,25 +64,35 @@ let poradi = 0
 sipkaPrava.addEventListener("click", dalsiObrazek)
 sipkaLeva.addEventListener("click", predchoziObrazek)
 
+
+
 function priNacitani(){
     obrazek.src = "obrazky/" + obrazky[poradi]
     obrazek.alt = obrazky[poradi]
+    
+    //nacteni obrazku do HTML do pruhGalerie na spod stranky
+    let obsah = ""
+    for (let i = 0; i < obrazky.length; i++){
+        obsah += `<img id="fotoPruh" src="obrazky/${obrazky[i]}" alt="${obrazky[i]}">`
+        pruhGalerie.innerHTML = obsah
+    }
 
-    if (poradi > 0 && poradi < 5) { 
+    //podminky, kvuli nahledum fotek na sipkach
+    if (poradi > 0 && poradi < obrazky.length-1) { 
     sipkaPrava.src = "obrazky/" + obrazky[poradi + 1]
     sipkaLeva.src = "obrazky/" + obrazky[poradi - 1]
     }
     else if( poradi == 0){
         sipkaPrava.src = "obrazky/" + obrazky[poradi + 1]
-        sipkaLeva.src = "obrazky/" + obrazky[5]
+        sipkaLeva.src = "obrazky/" + obrazky[obrazky.length-1]
     }
-    else if (poradi == 5){
+    else if (poradi == obrazky.length-1){
         sipkaPrava.src = "obrazky/" + obrazky[0]
         sipkaLeva.src = "obrazky/" + obrazky[poradi - 1]
     }
 
     
-    pocitadlo.innerHTML = `${obrazky[poradi]} - ${(poradi+1)}/6`
+    pocitadlo.innerHTML = `${obrazky[poradi]} - ${(poradi+1)} / ${(obrazky.length)}`
 }
 
 function dalsiObrazek(){
@@ -106,3 +116,4 @@ function predchoziObrazek(){
         priNacitani()
     }
 }
+
